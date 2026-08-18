@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>إلى أميرتي ❤️</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(135deg, #667eea, #764ba2);
+
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+
+            padding: 40px 25px;
+
+            background: rgba(255,255,255,0.12);
+
+            border-radius: 25px;
+
+            backdrop-filter: blur(10px);
+
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            font-size: 35px;
+            margin-bottom: 30px;
+        }
+
+        /* زر الصفحة الأولى */
+
+        .start-button {
+            border: none;
+            padding: 18px 35px;
+
+            font-size: 22px;
+            font-weight: bold;
+
+            border-radius: 50px;
+
+            cursor: pointer;
+
+            background: white;
+            color: #764ba2;
+
+            transition: 0.3s;
+        }
+
+        .start-button:hover {
+            transform: scale(1.08);
+        }
+
+        /* العد التنازلي */
+
+        #countdown {
+            display: none;
+
+            font-size: 100px;
+            font-weight: bold;
+
+            margin-top: 20px;
+        }
+
+        /* إخفاء الصفحات */
+
+        #surprise,
+        #thirdPage {
+            display: none;
+        }
+
+
+        /* =========================
+           القلب - زرار الصفحة الثانية
+        ========================= */
+
+        .heart-button {
+
+            position: relative;
+
+            width: 220px;
+            height: 220px;
+
+            margin: 80px auto 60px;
+
+            transform: rotate(-45deg);
+
+            background: #ff1744;
+
+            border: none;
+
+            cursor: pointer;
+
+            padding: 0;
+
+            animation: heartbeat 1s infinite;
+
+            box-shadow: 0 0 40px rgba(255,23,68,0.7);
+        }
+
+        .heart-button::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            background: #ff1744;
+
+            border-radius: 50%;
+
+            top: -110px;
+            left: 0;
+        }
+
+        .heart-button::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            background: #ff1744;
+
+            border-radius: 50%;
+
+            left: 110px;
+            top: 0;
+        }
+
+        /* الكتابة داخل القلب */
+
+        .heart-text {
+
+            position: absolute;
+
+            z-index: 10;
+
+            width: 300px;
+
+            left: -40px;
+
+            top: 85px;
+
+            transform: rotate(45deg);
+
+            font-size: 30px;
+
+            font-weight: bold;
+
+            color: white;
+
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+
+            pointer-events: none;
+        }
+
+
+        /* حركة نبض القلب */
+
+        @keyframes heartbeat {
+
+            0% {
+                transform: rotate(-45deg) scale(1);
+            }
+
+            25% {
+                transform: rotate(-45deg) scale(1.08);
+            }
+
+            50% {
+                transform: rotate(-45deg) scale(1);
+            }
+
+            75% {
+                transform: rotate(-45deg) scale(1.08);
+            }
+
+            100% {
+                transform: rotate(-45deg) scale(1);
+            }
+
+        }
+
+
+        .love-message {
+            font-size: 24px;
+            margin-top: 30px;
+        }
+
+
+        /* =========================
+           الصفحة الثالثة
+        ========================= */
+
+        #thirdPage h1 {
+            font-size: 42px;
+        }
+
+        #thirdPage p {
+            font-size: 25px;
+            line-height: 1.8;
+        }
+
+        .big-heart {
+
+            font-size: 100px;
+
+            animation: floating 2s infinite ease-in-out;
+        }
+
+        @keyframes floating {
+
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =========================
+         الصفحة الأولى
+    ========================= -->
+
+    <div id="firstPage">
+
+        <h1>
+            عندي ليكي مفاجأة 🎁
+        </h1>
+
+        <button
+            class="start-button"
+            onclick="startSurprise()">
+
+            انظر إلى المفاجأة 👀
+
+        </button>
+
+        <div id="countdown"></div>
+
+    </div>
+
+
+
+    <!-- =========================
+         الصفحة الثانية
+    ========================= -->
+
+    <div id="surprise">
+
+        <h1>
+            ❤️ المفاجأة ❤️
+        </h1>
+
+
+        <!-- القلب هو الزرار -->
+
+        <button
+            class="heart-button"
+            onclick="openThirdPage()">
+
+            <span class="heart-text">
+                إلى أميرتي ❤️
+            </span>
+
+        </button>
+
+
+        <div class="love-message">
+            ❤️ اضغطي على القلب ❤️
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         الصفحة الثالثة
+    ========================= -->
+
+    <div id="thirdPage">
+
+        <h1>
+            👑 إلى أميرتي ❤️
+        </h1>
+
+        <div class="big-heart">
+            💖
+        </div>
+
+        <p>
+            إلى أميرتي الجميلة ❤️
+            <br>
+            أنتِ أجمل حاجة حصلتلي في حياتي 💕
+            <br>
+            وبموت فيكي يا بسبوستي ربنا يخليكي ليا يا عمري❤️
+        </p>
+
+        <div style="font-size:35px;">
+            💕 💗 💓 💞 💘
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+    /* العد التنازلي */
+
+    function startSurprise() {
+
+        document.querySelector(".start-button")
+            .style.display = "none";
+
+
+        const countdown =
+            document.getElementById("countdown");
+
+
+        countdown.style.display = "block";
+
+
+        let number = 1;
+
+
+        countdown.innerHTML = number;
+
+
+        const timer = setInterval(function() {
+
+            number++;
+
+
+            if (number <= 10) {
+
+                countdown.innerHTML = number;
+
+            }
+
+            else {
+
+                clearInterval(timer);
+
+
+                document.getElementById("firstPage")
+                    .style.display = "none";
+
+
+                document.getElementById("surprise")
+                    .style.display = "block";
+
+            }
+
+        }, 1000);
+
+    }
+
+
+
+    /* فتح الصفحة الثالثة */
+
+    function openThirdPage() {
+
+        document.getElementById("surprise")
+            .style.display = "none";
+
+
+        document.getElementById("thirdPage")
+            .style.display = "block";
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>
